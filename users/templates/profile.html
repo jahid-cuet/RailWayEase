@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+
+
+
+  <div>
+  <a class="btn btn-primary m-3" href="{% url 'edit_profile' %}">Edit Your Profile</a>
+  <a class="btn btn-primary m-3" href="{% url 'Passchange' %}">Change Your Password</a>
+</div>  
+
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card text-bg-success mb-3">
+          <div class="card-header "><strong >Passenger Profile</strong> </div>
+          <div class="card-body">
+            <h1>First Name : {{ user.first_name  }}</h1>
+            <h2 class="card-title">Last Name : {{ user.last_name }}</h2>
+            <h2 class="card-title"> Email : {{ user.email }}</h2>
+            <h2 class="card-title"> Email : {{ user.account.gender }}</h2>
+            <h2 class="card-title">Street Adress : {{ user.address.street_address }}</h2>
+            <h2 class="card-title">City: {{ user.address.country }}</h2>
+            <h2 class="card-title">Country : {{ user.address.country }}</h2>
+          </div>
+        </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+{% endblock %} 

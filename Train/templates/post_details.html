@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row">
+    <div class="col-6">
+        <div class="card m-2">
+            <div class="card-body">
+                <img src="{{train.image.url}}" class="card-img-top" alt="..." style="width:50%;">
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card m-2">
+            <div class="card-body">
+                <p> Train Name :{{train.name}}</p>
+                <p> Train Schedule :  {{train.schedule}}</p>
+                <p><strong class='text-bg-light' style='font-size: 20px;'>Total Available: {{ train.quantity }}</strong></p>
+                <div>{{train.rating}}<div>
+
+               {% if user.is_authenticated %}
+            
+              <form action="{% url 'borrow_book' train.id %}" method="post"> 
+              
+                    {% csrf_token %}
+                    <button class='btn btn-primary text-white' type="submit">Seat Book</button>
+                </form> 
+
+             {% endif %}    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="card m-2">
+    <h5 class="p-3">Total Comments : {{ comments | length}}</h5>
+    {% for comment in comments %}
+  <div class="card-body border m-2">
+        <p><b>{{comment.name}}</b> {{comment.created_on}}</p>
+        <p>{{comment.body}}</p>
+    </div>
+    {% endfor %} 
+</div>
+ {% comment %} 
+<div class="card m-2">
+    <div class="card-body">
+        <form method="post">
+            <strong>Write Review Of This Book</strong>
+            {% csrf_token %}
+            {{comment_form | crispy}}
+
+            <button class="btn btn-warning">Submit</button>
+    </div>
+</div> {% endcomment %}
+
+
+
+
+
+
+
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4 bg-light text-primary"><strong>Train Seat Numbers</h2></strong>
+ <table class="table table-bordered text-center">
+        <thead class="bg-dark text-white ">
+            <tr>
+                <th>Seat Numbers</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr >
+                <td class='gap-2'>A1, <span class="bg-danger text-white">A2</span>, A3, A4</td>
+            </tr>
+            <tr>
+                <td><span class="bg-danger text-white">B1</span>, B2, B3, B4</td>
+            </tr>
+            <tr>
+                <td>C1, C2, <span class="bg-danger text-white">C3</span>, C4</td>
+            </tr>
+            <tr>
+                <td>D1, D2, D3, <span class="bg-danger text-white">D4</span></td>
+            </tr>
+            <tr>
+                <td><span class="bg-danger text-white">E1</span>, E2, E3, E4</td>
+            </tr>
+            <tr>
+                <td>F1, <span class="bg-danger text-white">F2</span>, F3, F4</td>
+            </tr>
+            <tr>
+                <td>G1, G2, <span class="bg-danger text-white">G3</span>, G4</td>
+            </tr>
+            <tr>
+                <td>H1, H2, H3, <span class="bg-danger text-white">H4</span></td>
+            </tr>
+            <tr>
+                <td><span class="bg-danger text-white">I1</span>, I2, I3, I4</td>
+            </tr>
+            <tr>
+                <td>J1, J2, <span class="bg-danger text-white">J3</span>, J4</td>
+            </tr>
+        </tbody>
+    </table>
+</strong>
+</div>
+
+
+
+{% endblock %}

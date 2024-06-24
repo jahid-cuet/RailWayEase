@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            
+            <th scope="col">Train Name </th>
+            <th scope="col">Seat Price</th>
+            <th scope="col">Seat Selection Date</th>
+            <th scope="col"> Review</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in user.borrowinghistory_set.all %}
+        <tr>
+           
+            {% comment %} <td>{{ order.book.title }}</td> {% endcomment %}
+            <td>
+                {{ order.train.name }}
+                
+            </td>
+            
+            <td>{{ order.train.borrowing_price }}</td>
+            <td>{{ order.borrowing_date }}</td>
+            <td>
+                <a class="nav-link btn btn-warning" href="{% url 'book_detail' order.train.id  %}">Click Me</a>
+              </td>
+            
+        </tr>
+        
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+ 
+
+
+<div>
+    {% comment %} {% for post in form %} {% endcomment %}
+    <h1>{{form.body}}</h1>
+    {% comment %} {% endfor %} {% endcomment %}
+</div>
+{% endblock %}
