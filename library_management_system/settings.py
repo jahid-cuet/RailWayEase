@@ -14,8 +14,8 @@ SECRET_KEY = 'django-insecure-$u18*_yu5g+&3pzu_d)uhhk_c29#)dxccb3y2hy-%0*qbxfwze
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-# CSRF_TRUSTED_ORIGINS = ['https://railwayease.onrender.com','https://*.127.0.0.1']
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://railwayease-2.onrender.com','https://*.127.0.0.1']
 
 
 # Application definition
